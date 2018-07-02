@@ -1,0 +1,76 @@
+<div>	
+		<form novalidate name="frmUsuario">
+			<div>
+			    <label for="idNome" class="col-sm-2 col-form-label">Nome:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" ng-model="usuario.nome" name="txtNome" id="idNome" required/>
+			      <span ng-show="frmUsuario.txtNome.$error.required && frmUsuario.txtNome.$dirty">Campo Nome Obrigatorio</span>
+			    </div>
+				
+				<label for="idEmail" class="col-sm-2 col-form-label">Email:</label>
+			    <div class="col-sm-10">
+			     	<input type="email" class="form-control" ng-model="usuario.email" name="txtEmail" id="idEmail" required/>
+					<span ng-show="frmUsuario.txtEmail.$error.required && frmUsuario.txtEmail.$dirty">Campo Email Obrigatorio</span>
+					<span ng-show="frmUsuario.txtEmail.$error.email">Email Invalido</span>
+			    </div>
+			    
+			    <label for="idTelefone" class="col-sm-2 col-form-label">Telefone:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" ng-model="usuario.telefone" name="txtTelefone" id="idTelefone" required/>
+			      <span ng-show="frmUsuario.txtNome.$error.required && frmUsuario.txtNome.$dirty">Campo Telefone Obrigatorio</span>
+			    </div>
+			    
+			    <label for="idSexo" class="col-sm-2 col-form-label">Sexo:</label>
+			    <div class="col-sm-10">
+					<select class="custom-select" name="txtSexo" ng-model="usuario.sexo" id="idSexo" required>
+						<option value="masculino">Masculino</option>
+						<option value="feminino">Feminino</option>
+					</select>
+					<span ng-show="frmUsuario.txtEstado.$error.required && frmUsuario.txtEstado.$dirty">Campo Estado Obrigatorio</span>
+			    </div>
+			</div>
+			<button type="button" class="btn btn-primary" ng-click="salvarCliente()">Salvar</button>
+			<button type="button" class="btn btn-danger" ng-click="cancelarAlteracaoUsuario()" ng-disabled="frmCliente.$invalid">Cancelar</button>
+		 </form>
+		 
+			<table ng-table="tableUsuario" class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">Id</th>
+			      <th scope="col">Nome</th>
+			      <th scope="col">Email</th>
+			      <th scope="col">Telefone</th>
+			      <th scope="col">Sexo</th>
+			      <th scope="col">Alterar</th>
+			      <th scope="col">Excluir</th>
+			    </tr>
+			  </thead>
+			<tbody>
+		    <tr ng-repeat="usuario in usuarios">
+		        <td>
+		            {{usuario.id}}
+		        </td>
+		        <td>
+		            {{usuario.nome}}
+		        </td>
+		       <td>
+		            {{usuario.email}}
+		        </td>
+		       <td>
+		            {{usuario.telefone}}
+		       </td>
+		       <td>
+		            {{usuario.sexo}}
+		       </td>
+		       <td>
+		       		<button type="button" class="btn btn-light" ng-click="alterarUsuario(usuario)">Alterar</button>
+		       </td>
+		       <td>
+		       		<button type="button" class="btn btn-light" ng-click="excluirUsuario(usuario)">Excluir</button>
+		       </td>
+			</tr>
+			</tbody>
+			</table>
+		
+		
+		</div>

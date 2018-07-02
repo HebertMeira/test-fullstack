@@ -3,7 +3,8 @@
 
 angular.module('test').config(['$stateProvider', function ($stateProvider) {
 
-	$stateProvider.state('app', {
+	$stateProvider
+	.state('app', {
 		url: '/home',
 		templateUrl: '/app/app-template.html',
 		controller: 'AppController'
